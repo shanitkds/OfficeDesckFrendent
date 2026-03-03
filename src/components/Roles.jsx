@@ -1,138 +1,143 @@
 import React from "react";
-import { FaUserShield, FaUsers, FaUser } from "react-icons/fa";
-import { AiOutlineCheckCircle } from "react-icons/ai";
+import { FaUserShield, FaUsers, FaUser, FaUserTie, FaCalculator } from "react-icons/fa";
 
-function Roles() {
+const Roles = () => {
   const roles = [
     {
       title: "Administrator",
+      tag: "System Owner",
       icon: <FaUserShield />,
-      highlight: true,
-      features: [
-        "Full system configuration & global settings",
-        "Complete financial and salary oversight",
-        "Master audit logs and security controls",
-      ],
-      preview: (
-        <div className="space-y-4 animate-pulse">
-          <div className="h-4 bg-blue-200 rounded w-3/4"></div>
-          <div className="h-4 bg-blue-100 rounded w-1/2"></div>
-          <div className="flex gap-4 mt-4">
-            <div className="w-10 h-10 rounded-lg bg-blue-200"></div>
-            <div className="w-10 h-10 rounded-lg bg-blue-200"></div>
-            <div className="w-10 h-10 rounded-lg bg-blue-200"></div>
-          </div>
-        </div>
-      ),
+      desc: "Full-scale governance and architectural control over the workspace.",
+      features: ["Infrastructure", "Security Audit"],
+      highlight: false,
+    },
+    {
+      title: "HR Manager",
+      tag: "People Ops",
+      icon: <FaUserTie />,
+      desc: "Talent lifecycle management from onboarding to performance.",
+      features: ["Recruitment", "Leave Mgmt"],
+      highlight: false,
     },
     {
       title: "Team Lead",
+      tag: "Operations",
       icon: <FaUsers />,
+      desc: "Middle-layer management to bridge strategy and execution.",
+      features: ["Analytics", "Planning"],
+      highlight: true, 
+    },
+    {
+      title: "Accountant",
+      tag: "Fiscal",
+      icon: <FaCalculator />,
+      desc: "Financial tracking and automated payroll disbursement.",
+      features: ["Payroll", "Compliance"],
       highlight: false,
-      features: [
-        "Team performance tracking & AI reviews",
-        "Task assignment and sprint oversight",
-        "Leave approvals and shift management",
-      ],
-      preview: (
-        <div className="space-y-4">
-          <div className="h-3 bg-gray-200 rounded w-1/3"></div>
-          <div className="relative h-3 bg-gray-100 rounded-full w-full overflow-hidden">
-            <div className="absolute top-0 left-0 h-full bg-blue-500 w-2/3 rounded-full"></div>
-          </div>
-          <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-        </div>
-      ),
     },
     {
       title: "Employee",
+      tag: "Contributor",
       icon: <FaUser />,
+      desc: "Focus-oriented interface optimized for task completion.",
+      features: ["Workflows", "Task Sync"],
       highlight: false,
-      features: [
-        "Self-service attendance and punch-in",
-        "Personal task board and deadline tracking",
-        "Payslip access and profile management",
-      ],
-      preview: (
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-gray-200 to-gray-300"></div>
-          <div className="space-y-2 flex-1">
-            <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-            <div className="h-2 bg-gray-100 rounded w-1/2"></div>
-          </div>
-        </div>
-      ),
     },
   ];
 
   return (
-    <section className="py-28 bg-[#fafafa]">
-      <div className="max-w-7xl mx-auto px-8">
-        {/* Heading */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl font-black text-[#111827] mb-6 tracking-tight">
-            Tailored Experiences for <span className="text-blue-600">Every User</span>
-          </h2>
-          <p className="text-[#6B7280] text-xl max-w-2xl mx-auto font-medium">
-            Specific permissions and interfaces designed for distinct organizational needs.
+    <section className="py-32 bg-white text-[#1a1c21] overflow-hidden">
+      <div className="max-w-[1600px] mx-auto px-6">
+        
+        {/* Header */}
+        <div className="flex flex-col pl-20 md:flex-row justify-between items-start md:items-end mb-20 gap-8">
+          <div className="space-y-4">
+            <h3 className="text-5xl font-bold tracking-tighter text-[#0f172a]">
+              One platform. <br />
+              <span className="text-blue-500/60">Five perspectives.</span>
+            </h3>
+          </div>
+          <p className="max-w-xs text-gray-500 text-lg leading-relaxed font-normal">
+            Granular permission sets that transform the UI based on specific organizational roles.
           </p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        {/* Roles Grid: 5 Columns for Large Screens */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-px bg-gray-200 border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/5">
           {roles.map((role, idx) => (
             <div
               key={idx}
-              className={`group relative bg-white rounded-[2rem] transition-all duration-500 hover:-translate-y-2 
-                ${
-                  role.highlight
-                    ? "border-2 border-blue-500 shadow-[0_20px_50px_rgba(59,130,246,0.15)] scale-105 z-10"
-                    : "border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl"
-                }`}
+              className={`relative group p-8 transition-all duration-700 ${
+                role.highlight ? "bg-[#f8faff] z-10 shadow-[0_0_40px_rgba(0,0,0,0.03)]" : "bg-white z-0 hover:bg-gray-50/50"
+              }`}
             >
-              <div className="p-10">
-                {/* Icon & Title */}
-                <div className="flex items-center gap-5 mb-10">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-transform duration-500 group-hover:rotate-12 
-                    ${role.highlight ? "bg-blue-600 text-white" : "bg-blue-50 text-blue-600"}`}>
+              {/* Subtle Blue Glow for Highlighted Card */}
+              {role.highlight && (
+                <div className="absolute inset-0 bg-blue-500/5 blur-[60px] pointer-events-none" />
+              )}
+
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-10">
+                  <div className={`text-xl transition-colors duration-500 ${
+                    role.highlight ? "text-blue-600" : "text-gray-400 group-hover:text-blue-500"
+                  }`}>
                     {role.icon}
                   </div>
-                  <h3 className="text-2xl font-extrabold text-[#111827]">
-                    {role.title}
-                  </h3>
+                  <span className={`text-[9px] font-mono border px-2 py-1 rounded tracking-widest uppercase font-bold ${
+                    role.highlight 
+                    ? "border-blue-200 text-blue-600 bg-blue-50" 
+                    : "border-gray-200 text-gray-500 bg-gray-50"
+                  }`}>
+                    {role.tag}
+                  </span>
                 </div>
 
-                {/* Feature List */}
-                <ul className="space-y-6 mb-10">
-                  {role.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-3 group/item">
-                      <AiOutlineCheckCircle className={`text-xl mt-0.5 transition-colors ${role.highlight ? "text-blue-500" : "text-green-500"}`} />
-                      <span className="text-gray-600 font-medium group-hover/item:text-gray-900 transition-colors">
-                        {feature}
-                      </span>
-                    </li>
+                <h4 className="text-xl font-bold mb-3 tracking-tight text-[#0f172a]">
+                  {role.title}
+                </h4>
+                
+                <p className="text-gray-500 text-xs leading-relaxed mb-6 h-12 overflow-hidden">
+                  {role.desc}
+                </p>
+
+                {/* Feature Pills */}
+                <div className="flex flex-wrap gap-1.5 mb-10">
+                  {role.features.map((f, i) => (
+                    <span key={i} className="text-[9px] font-bold bg-white border border-gray-100 px-2 py-1 rounded-full text-gray-600 shadow-sm whitespace-nowrap">
+                      {f}
+                    </span>
                   ))}
-                </ul>
-              </div>
-
-              {/* Bottom UI Preview Section */}
-              <div className={`p-10 rounded-b-[2rem] border-t transition-colors duration-500 
-                ${role.highlight ? "bg-blue-50/50 border-blue-100" : "bg-gray-50/50 border-gray-50 group-hover:bg-white"}`}>
-                {role.preview}
-              </div>
-
-              {/* Subtle Corner Glow for Highlighted Card */}
-              {/* {role.highlight && (
-                <div className="absolute -top-4 -right-4 bg-blue-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
-                  RECOMMENDED
                 </div>
-              )} */}
+
+                {/* Minimalist UI Preview */}
+                <div className={`mt-auto pt-6 border-t transition-colors duration-500 ${
+                  role.highlight ? "border-blue-100" : "border-gray-100 group-hover:border-blue-200"
+                }`}>
+                  <div className={`rounded-xl p-3 space-y-2.5 border ${
+                    role.highlight ? "bg-white border-blue-50" : "bg-gray-50/50 border-gray-100"
+                  }`}>
+                    <div className="flex gap-1.5">
+                      <div className={`w-1.5 h-1.5 rounded-full ${role.highlight ? "bg-blue-200" : "bg-gray-200"}`} />
+                      <div className={`w-1.5 h-1.5 rounded-full ${role.highlight ? "bg-blue-200" : "bg-gray-200"}`} />
+                    </div>
+                    <div className={`h-1 w-full rounded ${role.highlight ? "bg-blue-50" : "bg-gray-100"}`} />
+                    <div className={`h-1 w-2/3 rounded ${role.highlight ? "bg-blue-50" : "bg-gray-100"}`} />
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Section Footer */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-400 text-[10px] font-mono tracking-widest uppercase font-bold">
+            Enterprise RBAC System • SOC2 Compliant • 256-bit Encryption
+          </p>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default Roles;

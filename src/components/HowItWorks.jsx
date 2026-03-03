@@ -1,74 +1,94 @@
 import React from "react";
 
-function HowItWorks() {
+const HowItWorks = () => {
   const steps = [
     {
-      num: "1",
-      title: "Login",
-      desc: "Access your secure portal with SSO or two-factor auth.",
+      num: "01",
+      title: "Secure Authentication",
+      desc: "Access your workspace via enterprise SSO or multi-factor biometric authentication.",
     },
     {
-      num: "2",
-      title: "Identify Role",
-      desc: "System automatically recognizes your organizational level.",
+      num: "02",
+      title: "Heuristic Role Identity",
+      desc: "The neural engine instantly maps your profile to the global organizational directory.",
     },
     {
-      num: "3",
-      title: "Redirect",
-      desc: "Get navigated to your personalized workspace immediately.",
+      num: "03",
+      title: "Dynamic Routing",
+      desc: "Automated navigation to your role-specific dashboard with tailored command tools.",
     },
     {
-      num: "4",
-      title: "Manage",
-      desc: "Start managing tasks, teams, or personal attendance.",
+      num: "04",
+      title: "Operational Flow",
+      desc: "Execute tasks, manage capital, or oversee performance with real-time sync.",
     },
   ];
 
   return (
-    <section className="py-28 bg-[#d4dae7] relative">
-      <div className="max-w-7xl mx-auto px-8 relative">
-
-        {/* Heading */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-extrabold text-[#1f2937] mb-4">
-            How It Works
+    <section className="py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative">
+        
+        {/* Minimalist Header */}
+        <div className="mb-24 space-y-4">
+          
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-[#0f172a]">
+            Protocol <span className="text-blue-500/50">&</span> Process.
           </h2>
-          <p className="text-[#6b7280] max-w-2xl mx-auto text-lg">
-            Get your entire team onboarded in minutes with our streamlined process.
+          <p className="max-w-xl text-gray-500 text-lg leading-relaxed font-normal pt-2">
+            A frictionless onboarding experience designed for global scale and zero-latency deployment.
           </p>
         </div>
 
-        {/* Connecting Line */}
-        <div className="hidden lg:block absolute top-[63%] left-8 right-8 h-[2px] bg-blue-200 z-0"></div>
-
         {/* Steps Grid */}
-        <div className="relative grid lg:grid-cols-4 gap-10 z-10">
-
-          {steps.map((step) => (
+        <div className="relative grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/5">
+          {steps.map((step, idx) => (
             <div
-              key={step.num}
-              className="bg-white rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.05)] border border-gray-100 p-10 text-center"
+              key={idx}
+              className="group relative bg-white p-10 transition-all duration-500 hover:bg-[#f8faff]"
             >
-              {/* Number Circle */}
-              <div className="w-16 h-16 bg-[#1A73E8] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 ring-8 ring-blue-50 shadow-md">
-                {step.num}
+              {/* Step Number - Monospace & Minimal */}
+              <div className="flex justify-between items-start mb-12">
+                <span className="font-mono text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-md">
+                  {step.num}
+                </span>
+                {/* Arrow Icon for flow (Except last) */}
+                {idx !== steps.length - 1 && (
+                  <div className="hidden lg:block text-gray-200 group-hover:text-blue-200 transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                )}
               </div>
 
-              <h4 className="font-bold text-lg mb-3 text-[#111827]">
-                {step.title}
-              </h4>
+              <div className="space-y-4">
+                <h4 className="text-xl font-bold text-[#0f172a] tracking-tight group-hover:text-blue-600 transition-colors">
+                  {step.title}
+                </h4>
 
-              <p className="text-[#6b7280] text-sm leading-relaxed">
-                {step.desc}
-              </p>
+                <p className="text-gray-500 text-sm leading-relaxed font-medium">
+                  {step.desc}
+                </p>
+              </div>
+
+              {/* Decorative Corner Accent */}
+              <div className="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-br from-transparent to-blue-50/50 transition-opacity opacity-0 group-hover:opacity-100 rounded-tl-full" />
             </div>
           ))}
-
         </div>
 
+        {/* Bottom CTA for Process */}
+        <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
+          <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">
+            Ready to integrate?
+          </p>
+          <button className="bg-[#0f172a] text-white px-8 py-3 rounded-full font-bold text-sm transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-200">
+            View API Documentation
+          </button>
+        </div>
       </div>
     </section>
   );
-}
+};
 
 export default HowItWorks;
